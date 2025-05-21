@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/etIdade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Idade"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/etPeso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Peso (kg)"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/etAltura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Altura (cm)"
+        android:inputType="numberDecimal" />
+
+    <Spinner
+        android:id="@+id/spGenero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/genero_array" />
+
+    <Spinner
+        android:id="@+id/spNivelAtividade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/nivel_atividade_array" />
+
+    <Spinner
+        android:id="@+id/spObjetivo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/objetivo_array" />
+
+    <Button
+        android:id="@+id/btnContinuar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Continuar" />
+
+    <ImageView
+        android:id="@+id/btnInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_dialog_info"
+        android:contentDescription="Informação" />
+</LinearLayout>

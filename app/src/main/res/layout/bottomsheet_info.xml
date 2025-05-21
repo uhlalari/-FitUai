@@ -1,0 +1,20 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Por que pedimos esses dados?"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Precisamos desses dados para calcular sua Taxa de Metabolismo Basal (TMB) e o gasto calórico diário. As informações são armazenadas apenas localmente e não são compartilhadas com terceiros."
+        android:textSize="14sp"
+        android:layout_marginTop="8dp"/>
+</LinearLayout>

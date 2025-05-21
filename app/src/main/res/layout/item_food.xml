@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:gravity="center_vertical">
+
+    <ImageView
+        android:id="@+id/ivFood"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/tvFoodName"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textSize="16sp" />
+
+    <!-- Exibindo as calorias por porção -->
+    <TextView
+        android:id="@+id/tvFoodCalories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 Cal"
+        android:textSize="16sp"
+        android:layout_marginStart="8dp"/>
+
+    <Button
+        android:id="@+id/btnMinus"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="-" />
+
+    <TextView
+        android:id="@+id/tvPortion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 porções"
+        android:textSize="16sp"
+        android:layout_marginHorizontal="8dp"/>
+
+    <Button
+        android:id="@+id/btnPlus"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="+" />
+</LinearLayout>
