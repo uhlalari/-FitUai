@@ -25,4 +25,8 @@
         <item>Ganhar Peso</item>
     </string-array>
 
+    <string name="navigation_drawer_open">Abrir menu</string>
+    <string name="navigation_drawer_close">Fechar menu</string>
+
+
 </resources>

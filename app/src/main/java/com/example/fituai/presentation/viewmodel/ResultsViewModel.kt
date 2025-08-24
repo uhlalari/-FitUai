@@ -17,12 +17,12 @@ class ResultsViewModel(
     private val _tdee = MutableLiveData<Double>()
     val tdee: LiveData<Double> = _tdee
 
-    fun calcularTDEE() {
+    fun calculateTDEE() {
         viewModelScope.launch {
             val userData: UserData? = repository.getUserData()
             userData?.let {
-                val resultado = calculateTDEE.execute(it)
-                _tdee.value = resultado
+                val result = calculateTDEE.execute(it)
+                _tdee.value = result
             }
         }
     }

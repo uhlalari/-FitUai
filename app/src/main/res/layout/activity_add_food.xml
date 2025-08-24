@@ -1,30 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".presentation.activity.AddFoodActivity">
 
-    <TextView
-        android:id="@+id/tvFoodEntry"
-        android:layout_width="wrap_content"
+    <!-- Campo de busca -->
+    <EditText
+        android:id="@+id/etSearchFood"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Adicionar Alimentos"
-        android:textSize="24sp"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal"/>
+        android:hint="Buscar alimento"
+        android:drawableStart="@drawable/ic_search"
+        android:background="@drawable/bg_search_field"
+        android:padding="12dp"
+        android:textColor="@color/darkPurple"
+        android:textColorHint="@color/purple_light"
+        android:inputType="text" />
 
+    <!-- Lista de alimentos -->
     <ListView
         android:id="@+id/foodListView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp" />
 
+    <!-- Botão Continuar -->
     <Button
         android:id="@+id/btnContinue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Continuar"
-        android:layout_marginTop="16dp"/>
+        android:textColor="@color/purple"
+        android:background="@drawable/bg_button_outline_purple"
+        android:layout_marginTop="16dp" />
 </LinearLayout>

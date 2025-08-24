@@ -18,4 +18,13 @@ interface FoodEntryDao {
 
     @Query("DELETE FROM food_entries WHERE foodName = :name")
     suspend fun deleteByName(name: String)
+
+    @Query("SELECT * FROM food_entries WHERE date = :date")
+    suspend fun getEntriesByDate(date: String): List<FoodEntryEntity>
+
+    @Query("DELETE FROM food_entries WHERE date = :date")
+    suspend fun clearEntriesByDate(date: String)
+
+    @Query("DELETE FROM food_entries WHERE foodName = :name AND date = :date")
+    suspend fun deleteByNameAndDate(name: String, date: String) // <
 }

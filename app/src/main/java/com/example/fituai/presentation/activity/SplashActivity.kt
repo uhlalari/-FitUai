@@ -14,7 +14,15 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, WelcomeActivity::class.java)
+            val prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
+            val formularioPreenchido = prefs.getBoolean("formulario_preenchido", false)
+
+            val intent = if (formularioPreenchido) {
+                Intent(this, HomeActivity::class.java)
+            } else {
+                Intent(this, FormActivity::class.java)
+            }
+
             startActivity(intent)
             finish()
         }, 2000) // 2 segundos

@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fituai.R
 
@@ -14,7 +13,6 @@ class ImageCarouselAdapter(
 ) : RecyclerView.Adapter<ImageCarouselAdapter.ImageViewHolder>() {
 
     class ImageViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val cardView: CardView = view.findViewById(R.id.cardViewBanner)
         val imageView: ImageView = view.findViewById(R.id.imageViewBanner)
     }
 

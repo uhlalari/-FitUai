@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="purple">#77455f</color>
+    <color name="purple_light">#D1C4E9</color>
     <color name="darkPurple">#FF1A0D2E</color>
     <color name="orange">#FFE16A30</color>
     <color name="yellow">#FFF4AF0F</color>

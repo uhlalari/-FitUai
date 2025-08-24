@@ -42,7 +42,7 @@ class ResultsActivity : AppCompatActivity() {
 
         btnContinuar.isEnabled = false
 
-        viewModel.calcularTDEE()
+        viewModel.calculateTDEE()
 
         viewModel.tdee.observe(this) { tdee ->
             tvResultado.text = "Seu gasto calórico diário é: %.2f kcal".format(tdee)
@@ -56,8 +56,10 @@ class ResultsActivity : AppCompatActivity() {
 
         btnContinuar.setOnClickListener {
             val tdee = viewModel.tdee.value ?: 0.0
+            val prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
+            prefs.edit().putBoolean("formulario_preenchido", true).apply()
             if (tdee > 0.0) {
-                val intent = Intent(this, CheeseGraphActivity::class.java)
+                val intent = Intent(this, HomeActivity::class.java)
                 intent.putExtra("TDEE", tdee)
                 startActivity(intent)
             }
@@ -75,7 +77,7 @@ class ResultsActivity : AppCompatActivity() {
     }
 
     private fun goToWelcomeScreen() {
-        val intent = Intent(this, WelcomeActivity::class.java)
+        val intent = Intent(this, FormActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
         finish()

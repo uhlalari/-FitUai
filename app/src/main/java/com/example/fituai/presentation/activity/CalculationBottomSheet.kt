@@ -1,6 +1,5 @@
 package com.example.fituai.presentation.activity
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

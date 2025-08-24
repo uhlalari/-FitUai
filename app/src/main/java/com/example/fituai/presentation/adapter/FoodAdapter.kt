@@ -4,10 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import com.example.fituai.R
 import com.example.fituai.domain.model.FoodItem
 
@@ -25,23 +22,27 @@ class FoodAdapter(
     override fun getItemId(position: Int): Long = position.toLong()
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.item_food, parent, false)
+        val view =
+            convertView ?: LayoutInflater.from(context).inflate(R.layout.item_food, parent, false)
 
         val foodItem = getItem(position) as FoodItem
 
-        val ivFood = view.findViewById<ImageView>(R.id.ivFood)
         val tvFoodName = view.findViewById<TextView>(R.id.tvFoodName)
         val tvFoodCalories = view.findViewById<TextView>(R.id.tvFoodCalories)
         val btnMinus = view.findViewById<Button>(R.id.btnMinus)
         val tvPortion = view.findViewById<TextView>(R.id.tvPortion)
         val btnPlus = view.findViewById<Button>(R.id.btnPlus)
 
-        ivFood.setImageResource(foodItem.imageResId)
         tvFoodName.text = foodItem.name
         tvFoodCalories.text = "${foodItem.calories} Cal"
 
         var quantity = savedQuantities[foodItem.name] ?: 0
         tvPortion.text = "$quantity porções"
+
+        btnMinus.setBackgroundResource(R.drawable.bg_button_outline_purple)
+        btnMinus.setTextColor(context.getColor(R.color.purple))
+        btnPlus.setBackgroundResource(R.drawable.bg_button_outline_purple)
+        btnPlus.setTextColor(context.getColor(R.color.purple))
 
         btnPlus.setOnClickListener {
             quantity++

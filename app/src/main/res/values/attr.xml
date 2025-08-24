@@ -1,0 +1,6 @@
+<resources>
+    <declare-styleable name="StepProgressView">
+        <attr name="currentStep" format="integer" />
+        <attr name="totalSteps" format="integer" />
+    </declare-styleable>
+</resources>

@@ -5,11 +5,11 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "user_data")
 data class UserDataEntity(
-    @PrimaryKey val id: Int = 0, // sempre 0, já que é só um usuário
-    val idade: Int,
-    val peso: Float,
-    val altura: Float,
-    val genero: String,
-    val nivelAtividade: String,
-    val objetivo: String
+    @PrimaryKey val id: Int = 0,
+    val age: Int? = null,
+    val weight: Float? = null,
+    val height: Float? = null,
+    val gender: String? = null,
+    val activityLevel: String? = null,
+    val goal: String? = null
 )
