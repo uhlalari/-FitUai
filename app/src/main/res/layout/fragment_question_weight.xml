@@ -1,58 +1,81 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/white"
-    android:padding="24dp">
+    android:padding="16dp">
 
     <com.example.fituai.presentation.ui.StepProgressView
         android:id="@+id/stepProgress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="24dp"
         app:currentStep="2"
         app:totalSteps="5" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center">
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:padding="24dp"
-        android:elevation="4dp"
-        android:radius="12dp">
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_margin="8dp"
+            app:cardCornerRadius="12dp"
+            app:cardUseCompatPadding="true"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/neutral100">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Qual o seu peso?"
-                android:textSize="18sp"
-                android:layout_marginBottom="12dp" />
-
-            <EditText
-                android:id="@+id/etPeso"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:hint="Digite seu peso em kg" />
+                android:orientation="vertical"
+                android:padding="16dp">
 
-            <Button
-                android:id="@+id/btnProximo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Próximo"
-                android:layout_marginTop="16dp" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-</LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Qual o seu peso?"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/purple"
+                    android:layout_marginBottom="12dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Peso"
+                    app:helperText="Em kg"
+                    app:endIconMode="clear_text"
+                    app:boxBackgroundMode="filled"
+                    app:boxBackgroundColor="@color/neutral200"
+                    app:boxStrokeColor="@color/purple"
+                    app:hintTextColor="@color/purple"
+                    app:endIconTint="@color/purple">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPeso"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/orange"
+                        android:background="@android:color/transparent" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnProximo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Próximo"
+                    app:backgroundTint="@color/purple"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
 </LinearLayout>

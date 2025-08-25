@@ -43,7 +43,7 @@ class AgeQuestionFragment : Fragment() {
                     .addToBackStack(null)
                     .commit()
             } else {
-                Toast.makeText(context, "Enter a valid age", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Informe uma idade válida.", Toast.LENGTH_SHORT).show()
             }
         }
     }

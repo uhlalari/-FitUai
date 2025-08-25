@@ -43,7 +43,7 @@ class WeightQuestionFragment : Fragment() {
                     .addToBackStack(null)
                     .commit()
             } else {
-                Toast.makeText(context, "Please enter a valid weight", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Informe um peso válido.", Toast.LENGTH_SHORT).show()
             }
         }
     }

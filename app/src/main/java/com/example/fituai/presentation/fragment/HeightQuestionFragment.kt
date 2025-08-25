@@ -43,7 +43,7 @@ class HeightQuestionFragment : Fragment() {
                     .addToBackStack(null)
                     .commit()
             } else {
-                Toast.makeText(context, "Enter a valid height", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Informe uma altura válida.", Toast.LENGTH_SHORT).show()
             }
         }
     }
