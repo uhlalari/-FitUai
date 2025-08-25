@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "éFitUai"
 include(":app")
+include(":designsystem")
  
