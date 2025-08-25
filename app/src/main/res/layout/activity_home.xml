@@ -324,74 +324,18 @@
                 android:layout_height="210dp"
                 android:layout_marginBottom="4dp" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/addWaterCard"
+            <com.example.fituai.designsystem.WaterCardView
+                android:id="@+id/waterCard"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginHorizontal="4dp"
                 android:layout_marginBottom="4dp"
-                app:cardBackgroundColor="@color/neutral100"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="4dp"
-                app:cardUseCompatPadding="true">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="12dp">
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="Agua"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_iogurte" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3"
-                        android:baselineAligned="false"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="12dp">
-
-                        <ImageButton
-                            android:id="@+id/btnSubWater"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="16dp"
-                            android:background="@null"
-                            android:contentDescription="Adicionar agua"
-                            android:src="@drawable/ic_circle" />
-
-                        <TextView
-                            android:id="@+id/tvWaterTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Água"
-                            android:textColor="@color/purple"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <ImageButton
-                            android:id="@+id/btnAddWater"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:background="@null"
-                            android:contentDescription="Adicionar agua"
-                            android:src="@drawable/ic_add" />
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                app:ds_iconSrc="@drawable/ic_iogurte"
+                app:ds_titleText="Água"
+                app:ds_titleTextColor="@color/purple"
+                app:ds_cardBackgroundColor="@color/neutral100"
+                app:ds_leftActionIcon="@drawable/ic_circle"
+                app:ds_rightActionIcon="@drawable/ic_add" />
 
         </LinearLayout>
 

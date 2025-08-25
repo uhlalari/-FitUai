@@ -26,6 +26,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import com.example.fituai.designsystem.MealSectionCardView
+import com.example.fituai.designsystem.WaterCardView
 
 class HomeActivity : AppCompatActivity() {
 
@@ -39,9 +40,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var tvCarbValues: TextView
     private lateinit var tvProtValues: TextView
     private lateinit var tvGordValues: TextView
-    private lateinit var tvWaterTitle: TextView
-    private lateinit var btnAddWater: ImageButton
-    private lateinit var btnSubWater: ImageButton
+    private lateinit var waterCard: WaterCardView
     private lateinit var bannerViewPager: ViewPager2
     private lateinit var dotsContainer: LinearLayout
     private lateinit var dots: Array<ImageView>
@@ -90,15 +89,13 @@ class HomeActivity : AppCompatActivity() {
         tvCarbValues = findViewById(R.id.tvCarbValues)
         tvProtValues = findViewById(R.id.tvProtValues)
         tvGordValues = findViewById(R.id.tvGordValues)
-        tvWaterTitle = findViewById(R.id.tvWaterTitle)
-        btnAddWater = findViewById(R.id.btnAddWater)
-        btnSubWater = findViewById(R.id.btnSubWater)
         bannerViewPager = findViewById(R.id.bannerViewPager)
 
         // Cards do Design System
         snackCard = findViewById(R.id.addSnackCard)
         foodCard = findViewById(R.id.addFoodCard)
         dinnerCard = findViewById(R.id.addDinnerCard)
+        waterCard = findViewById(R.id.waterCard)
     }
 
     private fun setupListeners() {
@@ -148,14 +145,14 @@ class HomeActivity : AppCompatActivity() {
             )
         }
 
-        btnAddWater.setOnClickListener {
+        waterCard.setOnRightActionClick {
             lifecycleScope.launch {
                 repository.updateWaterIntake(getFormattedDate(), 200)
                 updateWaterUI()
             }
         }
 
-        btnSubWater.setOnClickListener {
+        waterCard.setOnLeftActionClick {
             lifecycleScope.launch {
                 repository.updateWaterIntake(getFormattedDate(), -200)
                 updateWaterUI()
@@ -230,7 +227,7 @@ class HomeActivity : AppCompatActivity() {
     private fun updateWaterUI() {
         lifecycleScope.launch {
             val waterMl = repository.getWaterIntakeByDate(getFormattedDate())
-            tvWaterTitle.text = "Água: ${waterMl}ml"
+            waterCard.setTitle("Água: ${waterMl}ml")
         }
     }
 

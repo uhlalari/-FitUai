@@ -1,15 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Global attribute definitions (avoid duplicates) -->
+    <attr name="ds_iconSrc" format="reference" />
+    <attr name="ds_titleText" format="string" />
+    <attr name="ds_titleTextColor" format="color|reference" />
+    <attr name="ds_cardBackgroundColor" format="color|reference" />
+    <attr name="ds_ingestedText" format="string" />
+    <attr name="ds_recommendedText" format="string" />
+    <attr name="ds_actionIcon" format="reference" />
+    <attr name="ds_secondaryTextColor" format="color|reference" />
+    <attr name="ds_leftActionIcon" format="reference" />
+    <attr name="ds_rightActionIcon" format="reference" />
 
     <!-- MealSectionCardView attributes -->
     <declare-styleable name="MealSectionCardView">
-        <attr name="ds_iconSrc" format="reference" />
-        <attr name="ds_titleText" format="string" />
-        <attr name="ds_ingestedText" format="string" />
-        <attr name="ds_recommendedText" format="string" />
-        <attr name="ds_actionIcon" format="reference" />
-        <attr name="ds_titleTextColor" format="color|reference" />
-        <attr name="ds_secondaryTextColor" format="color|reference" />
-        <attr name="ds_cardBackgroundColor" format="color|reference" />
+        <attr name="ds_iconSrc" />
+        <attr name="ds_titleText" />
+        <attr name="ds_ingestedText" />
+        <attr name="ds_recommendedText" />
+        <attr name="ds_actionIcon" />
+        <attr name="ds_titleTextColor" />
+        <attr name="ds_secondaryTextColor" />
+        <attr name="ds_cardBackgroundColor" />
+    </declare-styleable>
+
+    <!-- WaterCardView attributes -->
+    <declare-styleable name="WaterCardView">
+        <attr name="ds_iconSrc" />
+        <attr name="ds_titleText" />
+        <attr name="ds_leftActionIcon" />
+        <attr name="ds_rightActionIcon" />
+        <attr name="ds_titleTextColor" />
+        <attr name="ds_cardBackgroundColor" />
     </declare-styleable>
 </resources>
