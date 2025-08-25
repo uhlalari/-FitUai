@@ -268,218 +268,53 @@
                                 android:textSize="12sp" />
                         </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
+                </LinearLayout>  
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
+            <com.example.fituai.designsystem.MealSectionCardView
                 android:id="@+id/addSnackCard"
                 android:layout_width="match_parent"
-                android:layout_height="110dp"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"
                 android:layout_marginBottom="4dp"
-                app:cardBackgroundColor="@color/neutral100"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="4dp"
-                app:cardUseCompatPadding="true">
+                app:ds_iconSrc="@drawable/ic_banana"
+                app:ds_titleText="Lanche"
+                app:ds_titleTextColor="@color/purple"
+                app:ds_secondaryTextColor="@color/purple"
+                app:ds_cardBackgroundColor="@color/neutral100"
+                app:ds_ingestedText="Ingerido: 150 kcal"
+                app:ds_recommendedText="Recomendado: 300 kcal"
+                app:ds_actionIcon="@drawable/ic_add" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="12dp">
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="Lanche"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_banana" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:paddingStart="12dp">
-
-                        <TextView
-                            android:id="@+id/tvSnackTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Lanche"
-                            android:textColor="@color/purple"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/tvSnackIngerido"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Ingerido: 150 kcal"
-                            android:textColor="@color/purple"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/tvSnackRecomendado"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Recomendado: 300 kcal"
-                            android:textColor="@color/purple"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <ImageButton
-                        android:id="@+id/btnAddSnack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:contentDescription="Adicionar lanche"
-                        android:src="@drawable/ic_add" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
+            <com.example.fituai.designsystem.MealSectionCardView
                 android:id="@+id/addFoodCard"
                 android:layout_width="match_parent"
-                android:layout_height="110dp"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"
                 android:layout_marginBottom="4dp"
-                app:cardBackgroundColor="@color/neutral100"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="4dp"
-                app:cardUseCompatPadding="true">
+                app:ds_iconSrc="@drawable/ic_arroz"
+                app:ds_titleText="Almoco"
+                app:ds_titleTextColor="@color/purple"
+                app:ds_secondaryTextColor="@color/purple"
+                app:ds_cardBackgroundColor="@color/neutral100"
+                app:ds_ingestedText="Ingerido: 150 kcal"
+                app:ds_recommendedText="Recomendado: 300 kcal"
+                app:ds_actionIcon="@drawable/ic_add" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="12dp">
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="Agua"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_arroz" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:paddingStart="12dp">
-
-                        <TextView
-                            android:id="@+id/tvFoodTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Almoco"
-                            android:textColor="@color/purple"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/tvFoodIngerido"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Ingerido: 150 kcal"
-                            android:textColor="@color/purple"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/tvFoodRecomendado"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Recomendado: 300 kcal"
-                            android:textColor="@color/purple"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <ImageButton
-                        android:id="@+id/btnFoodSnack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:contentDescription="Adicionar lanche"
-                        android:src="@drawable/ic_add" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
+            <com.example.fituai.designsystem.MealSectionCardView
                 android:id="@+id/addDinnerCard"
                 android:layout_width="match_parent"
-                android:layout_height="110dp"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"
                 android:layout_marginBottom="4dp"
-                app:cardBackgroundColor="@color/neutral100"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="4dp"
-                app:cardUseCompatPadding="true">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="12dp">
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="Agua"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_hamburguer" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:paddingStart="12dp">
-
-                        <TextView
-                            android:id="@+id/tvDinnerTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Janta"
-                            android:textColor="@color/purple"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/tvDinnerIngerido"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Ingerido: 150 kcal"
-                            android:textColor="@color/purple"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/tvDinnerRecomendado"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Recomendado: 300 kcal"
-                            android:textColor="@color/purple"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <ImageButton
-                        android:id="@+id/btnAddDinner"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:contentDescription="Adicionar lanche"
-                        android:src="@drawable/ic_add" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                app:ds_iconSrc="@drawable/ic_hamburguer"
+                app:ds_titleText="Janta"
+                app:ds_titleTextColor="@color/purple"
+                app:ds_secondaryTextColor="@color/purple"
+                app:ds_cardBackgroundColor="@color/neutral100"
+                app:ds_ingestedText="Ingerido: 150 kcal"
+                app:ds_recommendedText="Recomendado: 300 kcal"
+                app:ds_actionIcon="@drawable/ic_add" />
 
 
             <!-- Carrossel -->

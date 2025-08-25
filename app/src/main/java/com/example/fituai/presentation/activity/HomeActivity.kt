@@ -25,6 +25,7 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import com.example.fituai.designsystem.MealSectionCardView
 
 class HomeActivity : AppCompatActivity() {
 
@@ -44,6 +45,11 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var bannerViewPager: ViewPager2
     private lateinit var dotsContainer: LinearLayout
     private lateinit var dots: Array<ImageView>
+
+    // Design System meal cards
+    private lateinit var snackCard: MealSectionCardView
+    private lateinit var foodCard: MealSectionCardView
+    private lateinit var dinnerCard: MealSectionCardView
 
     private var totalCaloriesConsumed = 0.0
     private val selectedDate = Calendar.getInstance()
@@ -88,6 +94,11 @@ class HomeActivity : AppCompatActivity() {
         btnAddWater = findViewById(R.id.btnAddWater)
         btnSubWater = findViewById(R.id.btnSubWater)
         bannerViewPager = findViewById(R.id.bannerViewPager)
+
+        // Cards do Design System
+        snackCard = findViewById(R.id.addSnackCard)
+        foodCard = findViewById(R.id.addFoodCard)
+        dinnerCard = findViewById(R.id.addDinnerCard)
     }
 
     private fun setupListeners() {
@@ -112,22 +123,24 @@ class HomeActivity : AppCompatActivity() {
         findViewById<ImageButton>(R.id.btnPreviousDay).setOnClickListener { updateAndRefreshDate(-1) }
         findViewById<ImageButton>(R.id.btnNextDay).setOnClickListener { updateAndRefreshDate(1) }
 
-        val dateStr = getFormattedDate()
-        findViewById<ImageButton>(R.id.btnAddSnack).setOnClickListener {
+        snackCard.setOnActionClick {
+            val dateStr = getFormattedDate()
             startActivity(
                 Intent(this, AddFoodActivity::class.java)
                     .putExtra("selectedDate", dateStr)
                     .putExtra("tipoRefeicao", "Lanche")
             )
         }
-        findViewById<ImageButton>(R.id.btnFoodSnack).setOnClickListener {
+        foodCard.setOnActionClick {
+            val dateStr = getFormattedDate()
             startActivity(
                 Intent(this, AddFoodActivity::class.java)
                     .putExtra("selectedDate", dateStr)
                     .putExtra("tipoRefeicao", "Almoco")
             )
         }
-        findViewById<ImageButton>(R.id.btnAddDinner).setOnClickListener {
+        dinnerCard.setOnActionClick {
+            val dateStr = getFormattedDate()
             startActivity(
                 Intent(this, AddFoodActivity::class.java)
                     .putExtra("selectedDate", dateStr)
@@ -184,20 +197,14 @@ class HomeActivity : AppCompatActivity() {
                     .sumOf { it.calories * it.quantity }
             )
 
-            findViewById<TextView>(R.id.tvSnackIngerido).text =
-                "Ingerido: ${ingerido["Lanche"] ?: 0} kcal"
-            findViewById<TextView>(R.id.tvSnackRecomendado).text =
-                "Recomendado: ${recomendado["Lanche"] ?: 0} kcal"
+            snackCard.setIngested("Ingerido: ${ingerido["Lanche"] ?: 0} kcal")
+            snackCard.setRecommended("Recomendado: ${recomendado["Lanche"] ?: 0} kcal")
 
-            findViewById<TextView>(R.id.tvFoodIngerido).text =
-                "Ingerido: ${ingerido["Almoco"] ?: 0} kcal"
-            findViewById<TextView>(R.id.tvFoodRecomendado).text =
-                "Recomendado: ${recomendado["Almoco"] ?: 0} kcal"
+            foodCard.setIngested("Ingerido: ${ingerido["Almoco"] ?: 0} kcal")
+            foodCard.setRecommended("Recomendado: ${recomendado["Almoco"] ?: 0} kcal")
 
-            findViewById<TextView>(R.id.tvDinnerIngerido).text =
-                "Ingerido: ${ingerido["Jantar"] ?: 0} kcal"
-            findViewById<TextView>(R.id.tvDinnerRecomendado).text =
-                "Recomendado: ${recomendado["Jantar"] ?: 0} kcal"
+            dinnerCard.setIngested("Ingerido: ${ingerido["Jantar"] ?: 0} kcal")
+            dinnerCard.setRecommended("Recomendado: ${recomendado["Jantar"] ?: 0} kcal")
 
             val totalCalories = entries.sumOf { it.calories * it.quantity }
             val totalCarbs = entries.sumOf { it.carbs * it.quantity }

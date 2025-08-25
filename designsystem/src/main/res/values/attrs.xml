@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Defina aqui os atributos personalizáveis dos componentes do Design System -->
+
+    <!-- MealSectionCardView attributes -->
+    <declare-styleable name="MealSectionCardView">
+        <attr name="ds_iconSrc" format="reference" />
+        <attr name="ds_titleText" format="string" />
+        <attr name="ds_ingestedText" format="string" />
+        <attr name="ds_recommendedText" format="string" />
+        <attr name="ds_actionIcon" format="reference" />
+        <attr name="ds_titleTextColor" format="color|reference" />
+        <attr name="ds_secondaryTextColor" format="color|reference" />
+        <attr name="ds_cardBackgroundColor" format="color|reference" />
+    </declare-styleable>
 </resources>
