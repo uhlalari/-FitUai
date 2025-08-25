@@ -33,4 +33,24 @@
         <attr name="ds_titleTextColor" />
         <attr name="ds_cardBackgroundColor" />
     </declare-styleable>
+
+    <!-- StepProgressView (Design System) -->
+    <attr name="ds_activeColor" format="color|reference" />
+    <attr name="ds_inactiveColor" format="color|reference" />
+    <attr name="ds_segmentHeight" format="dimension" />
+    <attr name="ds_segmentSpacing" format="dimension" />
+    <attr name="ds_cornerRadius" format="dimension" />
+    <attr name="ds_animationDuration" format="integer" />
+    <declare-styleable name="StepProgressView">
+        <!-- API preservada -->
+        <attr name="currentStep" format="integer" />
+        <attr name="totalSteps" format="integer" />
+        <!-- Customizações opcionais -->
+        <attr name="ds_activeColor" />
+        <attr name="ds_inactiveColor" />
+        <attr name="ds_segmentHeight" />
+        <attr name="ds_segmentSpacing" />
+        <attr name="ds_cornerRadius" />
+        <attr name="ds_animationDuration" />
+    </declare-styleable>
 </resources>

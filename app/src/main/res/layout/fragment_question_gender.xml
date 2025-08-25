@@ -6,13 +6,16 @@
     android:background="@color/white"
     android:padding="16dp">
 
-    <com.example.fituai.presentation.ui.StepProgressView
+    <com.example.fituai.designsystem.StepProgressView
         android:id="@+id/stepProgress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         app:currentStep="4"
-        app:totalSteps="5" />
+        app:totalSteps="5"
+        app:ds_activeColor="@color/purple"
+        app:ds_inactiveColor="@color/orange"
+        app:ds_animationDuration="500" />
 
     <LinearLayout
         android:layout_width="match_parent"
