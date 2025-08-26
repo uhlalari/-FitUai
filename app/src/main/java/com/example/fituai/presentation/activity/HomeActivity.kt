@@ -9,7 +9,10 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.lifecycleScope
@@ -64,8 +67,35 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        window.statusBarColor = ContextCompat.getColor(this, R.color.white)
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+
+        // Edge-to-edge
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val content = findViewById<View>(android.R.id.content)
+        // Fundo claro sob a status bar e ícones escuros para acompanhar o tema do app
+        content.setBackgroundResource(R.color.white)
+        WindowInsetsControllerCompat(window, content).apply {
+            isAppearanceLightStatusBars = true  // ícones escuros
+            isAppearanceLightNavigationBars = true
+        }
+
+        val drawer = findViewById<DrawerLayout>(R.id.drawerLayout)
+        val navView = findViewById<NavigationView?>(R.id.navigationView)
+        val scrollContent = drawer.getChildAt(0) // ScrollView
+
+        // Aplicar insets apenas nos alvos certos
+        ViewCompat.setOnApplyWindowInsetsListener(drawer) { _, insets ->
+            val sb = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            // Top/bottom no conteúdo rolável
+            scrollContent?.setPadding(sb.left, sb.top, sb.right, sb.bottom)
+            // Apenas top no NavigationView para não sobrepor o header
+            navView?.setPadding(
+                navView.paddingLeft,
+                sb.top,
+                navView.paddingRight,
+                navView.paddingBottom
+            )
+            insets
+        }
 
         repository = FitnessRepository(applicationContext)
 

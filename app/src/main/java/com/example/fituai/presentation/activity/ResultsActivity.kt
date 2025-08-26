@@ -6,6 +6,11 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import android.view.View
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.fituai.R
 import com.example.fituai.data.repository.FitnessRepository
@@ -23,6 +28,20 @@ class ResultsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_results)
+
+        // Edge-to-edge
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val content = findViewById<View>(android.R.id.content)
+        // Ícones escuros em fundo claro
+        WindowInsetsControllerCompat(window, content).apply {
+            isAppearanceLightStatusBars = true
+            isAppearanceLightNavigationBars = true
+        }
+        ViewCompat.setOnApplyWindowInsetsListener(content) { v, insets ->
+            val sb = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(sb.left, sb.top, sb.right, sb.bottom)
+            insets
+        }
 
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)

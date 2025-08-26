@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Theme.ÉFitUai"  parent="Theme.MaterialComponents.DayNight.NoActionBar"/>
+    <style name="Theme.ÉFitUai"  parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Edge-to-edge: barras transparentes -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <!-- Ícones escuros para fundo claro -->
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <!-- Evitar contraste forçado na barra de navegação (API 29+) -->
+        <item name="android:enforceNavigationBarContrast">false</item>
+        <!-- Fundo da janela claro para áreas sob a status bar quando conteúdo não cobre -->
+        <item name="android:windowBackground">@color/white</item>
+    </style>
 </resources>
