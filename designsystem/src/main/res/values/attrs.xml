@@ -53,4 +53,19 @@
         <attr name="ds_cornerRadius" />
         <attr name="ds_animationDuration" />
     </declare-styleable>
+
+    <!-- NutritionSummaryBannerView attributes -->
+    <attr name="ds_goalCalories" format="integer" />
+    <attr name="ds_goalProtein" format="integer" />
+    <attr name="ds_goalCarbs" format="integer" />
+    <attr name="ds_goalFat" format="integer" />
+    <declare-styleable name="NutritionSummaryBannerView">
+        <attr name="ds_titleText" />
+        <attr name="ds_titleTextColor" />
+        <attr name="ds_cardBackgroundColor" />
+        <attr name="ds_goalCalories" />
+        <attr name="ds_goalProtein" />
+        <attr name="ds_goalCarbs" />
+        <attr name="ds_goalFat" />
+    </declare-styleable>
 </resources>

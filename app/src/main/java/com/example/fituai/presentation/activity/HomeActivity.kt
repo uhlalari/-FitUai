@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -30,19 +29,14 @@ import java.util.Calendar
 import java.util.Locale
 import com.example.fituai.designsystem.MealSectionCardView
 import com.example.fituai.designsystem.WaterCardView
+import com.example.fituai.designsystem.NutritionSummaryBannerView
+import android.graphics.Color
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var repository: FitnessRepository
 
-    private lateinit var progressCalorias: ProgressBar
-    private lateinit var progressCarb: ProgressBar
-    private lateinit var progressProt: ProgressBar
-    private lateinit var progressGord: ProgressBar
-    private lateinit var tvIngestaoNutricional: TextView
-    private lateinit var tvCarbValues: TextView
-    private lateinit var tvProtValues: TextView
-    private lateinit var tvGordValues: TextView
+    private lateinit var nutritionBanner: NutritionSummaryBannerView
     private lateinit var waterCard: WaterCardView
     private lateinit var bannerViewPager: ViewPager2
     private lateinit var dotsContainer: LinearLayout
@@ -111,14 +105,19 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        progressCalorias = findViewById(R.id.progressCalorias)
-        progressCarb = findViewById(R.id.progressCarb)
-        progressProt = findViewById(R.id.progressProt)
-        progressGord = findViewById(R.id.progressGord)
-        tvIngestaoNutricional = findViewById(R.id.tvIngestaoNutricional)
-        tvCarbValues = findViewById(R.id.tvCarbValues)
-        tvProtValues = findViewById(R.id.tvProtValues)
-        tvGordValues = findViewById(R.id.tvGordValues)
+        nutritionBanner = findViewById(R.id.dsNutritionBanner)
+        // Estética igual ao card anterior (fundo roxo, textos brancos, cores de progresso)
+        nutritionBanner.setCardBackgroundColor(getColor(R.color.purple))
+        nutritionBanner.setTitleTextColor(Color.WHITE)
+        nutritionBanner.setLabelsTextColor(Color.WHITE)
+        nutritionBanner.setValuesTextColor(Color.WHITE)
+        nutritionBanner.setProgressColors(
+            caloriesColor = getColor(R.color.orange),
+            proteinColor = getColor(R.color.yellow),
+            carbsColor = getColor(R.color.yellow),
+            fatColor = getColor(R.color.yellow),
+            trackColor = getColor(R.color.purple_light)
+        )
         bannerViewPager = findViewById(R.id.bannerViewPager)
 
         // Cards do Design System
@@ -240,15 +239,20 @@ class HomeActivity : AppCompatActivity() {
 
             totalCaloriesConsumed = totalCalories.toDouble()
 
-            progressCalorias.progress = totalCalories
-            progressCarb.progress = totalCarbs
-            progressProt.progress = totalProtein
-            progressGord.progress = totalFat
-
-            tvIngestaoNutricional.text = "Ingestão Nutricional: $totalCalories/${tdee.toInt()} kcal"
-            tvCarbValues.text = "$totalCarbs/300g"
-            tvProtValues.text = "$totalProtein/150g"
-            tvGordValues.text = "$totalFat/70g"
+            // Metas e valores (mantendo regras de negócio)
+            nutritionBanner.setGoals(
+                calories = tdee.toInt(),
+                protein = 150,
+                carbs = 300,
+                fat = 70
+            )
+            nutritionBanner.updateAll(
+                calories = totalCalories,
+                protein = totalProtein,
+                carbs = totalCarbs,
+                fat = totalFat
+            )
+            nutritionBanner.setTitle("Ingestão Nutricional: ${totalCalories}/${tdee.toInt()} kcal")
 
             updateWaterUI()
         }
