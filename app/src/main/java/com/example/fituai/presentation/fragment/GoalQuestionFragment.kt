@@ -6,7 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Spinner
+import android.widget.ArrayAdapter
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.fituai.R
@@ -33,10 +34,17 @@ class GoalQuestionFragment : Fragment() {
         )[FormViewModel::class.java]
 
         val btnFinish = view.findViewById<Button>(R.id.btnFinalizar)
-        val spGoal = view.findViewById<Spinner>(R.id.spObjetivo)
+        val actGoal = view.findViewById<MaterialAutoCompleteTextView>(R.id.actObjetivo)
+
+        val goalItems = resources.getStringArray(R.array.objetivo_array)
+        val goalAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, goalItems)
+        actGoal.setAdapter(goalAdapter)
+
+        actGoal.setOnClickListener { actGoal.showDropDown() }
+        actGoal.setOnFocusChangeListener { _, hasFocus -> if (hasFocus) actGoal.showDropDown() }
 
         btnFinish.setOnClickListener {
-            val goal = spGoal.selectedItem.toString()
+            val goal = actGoal.text?.toString()?.trim().orEmpty()
             viewModel.saveGoal(goal)
 
             startActivity(Intent(requireContext(), ResultsActivity::class.java))

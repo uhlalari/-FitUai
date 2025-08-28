@@ -11,5 +11,7 @@
         <item name="android:enforceNavigationBarContrast">false</item>
         <!-- Fundo da janela claro para áreas sob a status bar quando conteúdo não cobre -->
         <item name="android:windowBackground">@color/white</item>
+        <!-- Estilo padrão para todos os TextInputLayout -->
+        <item name="textInputStyle">@style/FitUai.TextInputLayout</item>
     </style>
 </resources>

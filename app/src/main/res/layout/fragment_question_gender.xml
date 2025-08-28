@@ -48,11 +48,30 @@
                 android:textColor="@color/purple"
                 android:layout_marginBottom="12dp" />
 
-            <Spinner
-                android:id="@+id/spGenero"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/FitUai.TextInputLayout.Exposed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/genero_array" />
+                android:hint="Gênero"
+                app:boxBackgroundMode="filled"
+                app:boxBackgroundColor="@color/neutral200"
+                app:boxStrokeColor="@color/purple"
+                app:hintTextColor="@color/darkPurple"
+                app:endIconMode="dropdown_menu"
+                app:endIconTint="@color/purple">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/actGenero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:entries="@array/genero_array"
+                    android:textColorHint="@color/darkPurple"
+                    android:textColor="@color/darkPurple"
+                    android:background="@android:color/transparent" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnProximo"

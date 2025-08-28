@@ -11,6 +11,7 @@
         android:text="Como calculamos seu gasto calórico?"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:textColor="@color/darkPurple"
         android:gravity="center" />
 
     <TextView
@@ -18,5 +19,6 @@
         android:layout_height="wrap_content"
         android:text="Usamos a fórmula de Harris-Benedict para estimar seu TDEE com base no seu peso, altura e nível de atividade."
         android:textSize="14sp"
+        android:textColor="@color/darkPurple"
         android:layout_marginTop="8dp"/>
 </LinearLayout>

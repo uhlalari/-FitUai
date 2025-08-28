@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Aparência da hint (label flutuante) do TextInputLayout -->
+    <style name="FitUai.TextInputLayout.Hint" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/darkPurple</item>
+        <item name="android:textColorHint">@color/darkPurple</item>
+    </style>
+
+    <!-- Estilo do componente TextInputLayout (FilledBox) com hint roxo escuro em todos os estados -->
+    <style name="FitUai.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="hintTextColor">@color/darkPurple</item>
+        <item name="android:textColorHint">@color/darkPurple</item>
+    </style>
+
+    <!-- Exposed Dropdown Menu (MaterialAutoCompleteTextView dentro de TextInputLayout) -->
+    <style name="FitUai.TextInputLayout.Exposed" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+        <item name="hintTextColor">@color/darkPurple</item>
+        <item name="android:textColorHint">@color/darkPurple</item>
+    </style>
+</resources>

@@ -5,7 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Spinner
+import android.widget.ArrayAdapter
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.fituai.R
@@ -31,10 +32,17 @@ class GenderQuestionFragment : Fragment() {
         )[FormViewModel::class.java]
 
         val btnNext = view.findViewById<Button>(R.id.btnProximo)
-        val spGender = view.findViewById<Spinner>(R.id.spGenero)
+        val actGender = view.findViewById<MaterialAutoCompleteTextView>(R.id.actGenero)
+
+        val genderItems = resources.getStringArray(R.array.genero_array)
+        val genderAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, genderItems)
+        actGender.setAdapter(genderAdapter)
+
+        actGender.setOnClickListener { actGender.showDropDown() }
+        actGender.setOnFocusChangeListener { _, hasFocus -> if (hasFocus) actGender.showDropDown() }
 
         btnNext.setOnClickListener {
-            val gender = spGender.selectedItem.toString()
+            val gender = actGender.text?.toString()?.trim().orEmpty()
             viewModel.saveGender(gender)
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, ActivityLevelQuestionFragment.newInstance())
