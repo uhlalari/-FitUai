@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Espaçamentos -->
+    <dimen name="ds_spacing_xs">4dp</dimen>
+    <dimen name="ds_spacing_s">8dp</dimen>
+    <dimen name="ds_spacing_m">12dp</dimen>
+    <dimen name="ds_spacing_l">16dp</dimen>
+
+    <!-- Cartões -->
+    <dimen name="ds_card_radius">14dp</dimen>
+    <dimen name="ds_card_radius_large">16dp</dimen>
+    <dimen name="ds_card_elevation_small">3dp</dimen>
+    <dimen name="ds_card_elevation">4dp</dimen>
+
+    <!-- Controles -->
+    <dimen name="ds_control_size">32dp</dimen>
+
+    <!-- Progress bars -->
+    <dimen name="ds_progress_height">12dp</dimen>
+    <dimen name="ds_progress_corner">6dp</dimen>
+    
+    <!-- Extras -->
+    <dimen name="ds_spacing_xs_6dp">6dp</dimen>
+    <dimen name="ds_spacing_xl_30dp">30dp</dimen>
+</resources>

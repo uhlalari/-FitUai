@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="ds_default_nutrition_title">Resumo nutricional</string>
+    <!-- Content descriptions e placeholders -->
+    <string name="ds_cd_icon">Ícone</string>
+    <string name="ds_cd_action">Ação</string>
+    <string name="ds_cd_left">Ação esquerda</string>
+    <string name="ds_cd_right">Ação direita</string>
+    <string name="ds_cd_add_portion">Adicionar porção</string>
+    <string name="ds_cd_remove_portion">Remover porção</string>
+    <!-- Placeholders de texto -->
+    <string name="ds_placeholder_food_name">Nome do alimento</string>
+    <string name="ds_placeholder_food_calories">100 kcal</string>
+    <string name="ds_label_calories">Calorias</string>
+    <string name="ds_value_zero_kcal">0/0 kcal</string>
+    <string name="ds_label_carbs">Carboidrato</string>
+    <string name="ds_label_protein">Proteína</string>
+    <string name="ds_label_fat">Gordura</string>
+    <string name="ds_value_zero_g">0/0 g</string>
 </resources>
