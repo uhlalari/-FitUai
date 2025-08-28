@@ -35,8 +35,14 @@ class FitnessRepository(context: Context) {
     suspend fun getFoodEntriesByDate(date: String = getToday()): List<FoodEntryEntity> =
         foodEntryDao.getEntriesByDate(date)
 
+    suspend fun getFoodEntriesByDateAndMeal(date: String, mealType: String): List<FoodEntryEntity> =
+        foodEntryDao.getEntriesByDateAndMeal(date, mealType)
+
     suspend fun removeFoodEntry(foodName: String) =
         foodEntryDao.deleteByName(foodName)
+
+    suspend fun removeFoodEntry(foodName: String, date: String, mealType: String) =
+        foodEntryDao.deleteByNameDateAndMeal(foodName, date, mealType)
 
     private fun UserData.toEntity() = UserDataEntity(
         id = 0,
@@ -74,16 +80,16 @@ class FitnessRepository(context: Context) {
         mealType: String,
         date: String
     ) {
-        val existingEntries = foodEntryDao.getEntriesByDate(date)
-        val existing = existingEntries.find { it.foodName == foodName }
+        val existingEntriesSameDateAndMeal = foodEntryDao.getEntriesByDateAndMeal(date, mealType)
+        val existing = existingEntriesSameDateAndMeal.find { it.foodName == foodName }
 
         if (quantity == 0) {
             if (existing != null) {
-                foodEntryDao.deleteByNameAndDate(foodName, date)
+                foodEntryDao.deleteByNameDateAndMeal(foodName, date, mealType)
             }
         } else {
             if (existing != null) {
-                foodEntryDao.deleteByNameAndDate(foodName, date)
+                foodEntryDao.deleteByNameDateAndMeal(foodName, date, mealType)
             }
 
             val newEntry = FoodEntryEntity(

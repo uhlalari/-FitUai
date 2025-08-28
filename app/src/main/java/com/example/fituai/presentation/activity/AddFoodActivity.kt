@@ -68,7 +68,7 @@ class AddFoodActivity : AppCompatActivity() {
         lifecycleScope.launch {
             fullFoodList = MockFoodDatabase.foods
 
-            val entries = repository.getFoodEntriesByDate(selectedDate)
+            val entries = repository.getFoodEntriesByDateAndMeal(selectedDate, tipoRefeicao)
             selectedQuantities = entries.associate { it.foodName to it.quantity }.toMutableMap()
 
             setupAdapter(fullFoodList)
@@ -107,7 +107,7 @@ class AddFoodActivity : AppCompatActivity() {
             selectedQuantities[foodItem.name] = quantity
             lifecycleScope.launch {
                 if (quantity == 0) {
-                    repository.removeFoodEntry(foodItem.name)
+                    repository.removeFoodEntry(foodItem.name, selectedDate, tipoRefeicao)
                 } else {
                     repository.upsertFoodEntry(
                         foodName = foodItem.name,
