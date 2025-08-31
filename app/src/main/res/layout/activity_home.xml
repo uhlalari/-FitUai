@@ -41,7 +41,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="éFitUai"
+                    android:text="@string/app_name"
                     android:textColor="@color/darkPurple"
                     android:textSize="16sp"
                     android:textStyle="bold" />

@@ -20,6 +20,9 @@ import com.example.fituai.data.repository.FitnessRepository
 import com.example.fituai.domain.model.FoodItem
 import com.example.fituai.presentation.adapter.FoodAdapter
 import kotlinx.coroutines.launch
+import com.example.fituai.core.AppPreferences
+import com.example.fituai.notification.NotificationHelper
+import com.example.fituai.domain.usecase.CalculateTDEE
 
 class AddFoodActivity : AppCompatActivity() {
 
@@ -119,6 +122,18 @@ class AddFoodActivity : AppCompatActivity() {
                         mealType = tipoRefeicao,
                         date = selectedDate
                     )
+                }
+
+                if (selectedDate == FitnessRepository.getToday() && AppPreferences.isDailyNotificationEnabled(this@AddFoodActivity)) {
+                    val entriesToday = repository.getFoodEntriesByDate(selectedDate)
+                    val consumed = entriesToday.sumOf { it.calories * it.quantity }
+                    val userData = repository.getUserData()
+                    val tdee = userData?.let { CalculateTDEE().execute(it) } ?: 2000.0
+                    if (entriesToday.isNotEmpty()) {
+                        NotificationHelper.showDailyProgress(this@AddFoodActivity, consumed, tdee.toInt())
+                    } else {
+                        NotificationHelper.cancelDailyProgress(this@AddFoodActivity)
+                    }
                 }
             }
         }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.ÉFitUai"  parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.FitUai"  parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Edge-to-edge: barras transparentes -->
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>

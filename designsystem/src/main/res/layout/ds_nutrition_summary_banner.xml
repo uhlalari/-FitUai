@@ -73,7 +73,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                tools:text="@string/ds_label_carbs"
+                android:text="@string/ds_label_carbs"
                 android:textAlignment="center"
                 android:textSize="12sp" />
 
@@ -82,7 +82,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                tools:text="@string/ds_label_protein"
+                android:text="@string/ds_label_protein"
                 android:textAlignment="center"
                 android:textSize="12sp" />
 
@@ -91,7 +91,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                tools:text="@string/ds_label_fat"
+                android:text="@string/ds_label_fat"
                 android:textAlignment="center"
                 android:textSize="12sp" />
         </LinearLayout>

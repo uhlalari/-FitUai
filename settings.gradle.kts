@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "éFitUai"
+rootProject.name = "FitUai"
 include(":app")
 include(":designsystem")
  

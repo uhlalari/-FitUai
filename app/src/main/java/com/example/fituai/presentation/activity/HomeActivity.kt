@@ -31,6 +31,13 @@ import com.example.fituai.designsystem.MealSectionCardView
 import com.example.fituai.designsystem.WaterCardView
 import com.example.fituai.designsystem.NutritionSummaryBannerView
 import android.graphics.Color
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.example.fituai.core.AppPreferences
+import com.example.fituai.notification.NotificationHelper
 
 class HomeActivity : AppCompatActivity() {
 
@@ -93,6 +100,9 @@ class HomeActivity : AppCompatActivity() {
 
         repository = FitnessRepository(applicationContext)
 
+        navView?.menu?.findItem(R.id.menu_toggle_notification)?.isChecked =
+            AppPreferences.isDailyNotificationEnabled(this)
+
         setupUI()
         setupListeners()
         setupBannerCarousel()
@@ -133,11 +143,26 @@ class HomeActivity : AppCompatActivity() {
         }
 
         findViewById<NavigationView>(R.id.navigationView).setNavigationItemSelectedListener {
-            if (it.itemId == R.id.menu_editar_formulario) {
-                startActivity(Intent(this, FormActivity::class.java))
-                findViewById<DrawerLayout>(R.id.drawerLayout).closeDrawer(GravityCompat.START)
-                true
-            } else false
+            when (it.itemId) {
+                R.id.menu_editar_formulario -> {
+                    startActivity(Intent(this, FormActivity::class.java))
+                    findViewById<DrawerLayout>(R.id.drawerLayout).closeDrawer(GravityCompat.START)
+                    true
+                }
+                R.id.menu_toggle_notification -> {
+                    val newChecked = !it.isChecked
+                    it.isChecked = newChecked
+                    AppPreferences.setDailyNotificationEnabled(this, newChecked)
+                    if (newChecked && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 100)
+                        }
+                    }
+                    refreshDataForDate()
+                    true
+                }
+                else -> false
+            }
         }
 
         fun updateAndRefreshDate(offset: Int) {
@@ -255,6 +280,18 @@ class HomeActivity : AppCompatActivity() {
             nutritionBanner.setTitle("Ingestão Nutricional: ${totalCalories}/${tdee.toInt()} kcal")
 
             updateWaterUI()
+
+            updateDailyNotification(entries.isNotEmpty(), totalCalories, tdee.toInt())
+        }
+    }
+
+    private fun updateDailyNotification(hasEntriesToday: Boolean, consumed: Int, goal: Int) {
+        val notificationsEnabled = AppPreferences.isDailyNotificationEnabled(this)
+        val isToday = getFormattedDate() == FitnessRepository.getToday()
+        if (notificationsEnabled && isToday && hasEntriesToday) {
+            NotificationHelper.showDailyProgress(this, consumed, goal)
+        } else {
+            NotificationHelper.cancelDailyProgress(this)
         }
     }
 

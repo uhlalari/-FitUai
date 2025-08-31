@@ -4,4 +4,10 @@
         android:id="@+id/menu_editar_formulario"
         android:title="Editar Formulário"
         android:icon="@drawable/ic_edit" />
+
+    <item
+        android:id="@+id/menu_toggle_notification"
+        android:title="Notificação de progresso diária"
+        android:checkable="true"
+        android:checked="true" />
 </menu>
