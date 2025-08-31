@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr format="reference" name="ds_actionIcon"/>
+    <attr format="color|reference" name="ds_activeColor"/>
+    <attr format="integer" name="ds_animationDuration"/>
+    <attr format="color|reference" name="ds_cardBackgroundColor"/>
+    <attr format="dimension" name="ds_cornerRadius"/>
+    <attr format="integer" name="ds_goalCalories"/>
+    <attr format="integer" name="ds_goalCarbs"/>
+    <attr format="integer" name="ds_goalFat"/>
+    <attr format="integer" name="ds_goalProtein"/>
+    <attr format="reference" name="ds_iconSrc"/>
+    <attr format="color|reference" name="ds_inactiveColor"/>
+    <attr format="string" name="ds_ingestedText"/>
+    <attr format="reference" name="ds_leftActionIcon"/>
+    <attr format="string" name="ds_recommendedText"/>
+    <attr format="reference" name="ds_rightActionIcon"/>
+    <attr format="color|reference" name="ds_secondaryTextColor"/>
+    <attr format="dimension" name="ds_segmentHeight"/>
+    <attr format="dimension" name="ds_segmentSpacing"/>
+    <attr format="string" name="ds_titleText"/>
+    <attr format="color|reference" name="ds_titleTextColor"/>
+    <color name="ds_outline">#E0E0E0</color>
+    <dimen name="ds_card_elevation">4dp</dimen>
+    <dimen name="ds_card_elevation_small">3dp</dimen>
+    <dimen name="ds_card_radius">14dp</dimen>
+    <dimen name="ds_card_radius_large">16dp</dimen>
+    <dimen name="ds_control_size">32dp</dimen>
+    <dimen name="ds_progress_corner">6dp</dimen>
+    <dimen name="ds_progress_height">12dp</dimen>
+    <dimen name="ds_spacing_l">16dp</dimen>
+    <dimen name="ds_spacing_m">12dp</dimen>
+    <dimen name="ds_spacing_s">8dp</dimen>
+    <dimen name="ds_spacing_xl_30dp">30dp</dimen>
+    <dimen name="ds_spacing_xs">4dp</dimen>
+    <dimen name="ds_spacing_xs_6dp">6dp</dimen>
+    <string name="ds_cd_action">Ação</string>
+    <string name="ds_cd_add_portion">Adicionar porção</string>
+    <string name="ds_cd_icon">Ícone</string>
+    <string name="ds_cd_left">Ação esquerda</string>
+    <string name="ds_cd_remove_portion">Remover porção</string>
+    <string name="ds_cd_right">Ação direita</string>
+    <string name="ds_default_nutrition_title">Resumo nutricional</string>
+    <string name="ds_label_calories">Calorias</string>
+    <string name="ds_label_carbs">Carboidrato</string>
+    <string name="ds_label_fat">Gordura</string>
+    <string name="ds_label_protein">Proteína</string>
+    <string name="ds_placeholder_food_calories">100 kcal</string>
+    <string name="ds_placeholder_food_name">Nome do alimento</string>
+    <string name="ds_value_zero_g">0/0 g</string>
+    <string name="ds_value_zero_kcal">0/0 kcal</string>
+    <declare-styleable name="MealSectionCardView">
+        <attr name="ds_iconSrc"/>
+        <attr name="ds_titleText"/>
+        <attr name="ds_ingestedText"/>
+        <attr name="ds_recommendedText"/>
+        <attr name="ds_actionIcon"/>
+        <attr name="ds_titleTextColor"/>
+        <attr name="ds_secondaryTextColor"/>
+        <attr name="ds_cardBackgroundColor"/>
+    </declare-styleable>
+    <declare-styleable name="NutritionSummaryBannerView">
+        <attr name="ds_titleText"/>
+        <attr name="ds_titleTextColor"/>
+        <attr name="ds_cardBackgroundColor"/>
+        <attr name="ds_goalCalories"/>
+        <attr name="ds_goalProtein"/>
+        <attr name="ds_goalCarbs"/>
+        <attr name="ds_goalFat"/>
+    </declare-styleable>
+    <declare-styleable name="StepProgressView">
+        
+        <attr format="integer" name="currentStep"/>
+        <attr format="integer" name="totalSteps"/>
+        
+        <attr name="ds_activeColor"/>
+        <attr name="ds_inactiveColor"/>
+        <attr name="ds_segmentHeight"/>
+        <attr name="ds_segmentSpacing"/>
+        <attr name="ds_cornerRadius"/>
+        <attr name="ds_animationDuration"/>
+    </declare-styleable>
+    <declare-styleable name="WaterCardView">
+        <attr name="ds_iconSrc"/>
+        <attr name="ds_titleText"/>
+        <attr name="ds_leftActionIcon"/>
+        <attr name="ds_rightActionIcon"/>
+        <attr name="ds_titleTextColor"/>
+        <attr name="ds_cardBackgroundColor"/>
+    </declare-styleable>
+</resources>

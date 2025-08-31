@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/ds_spacing_s"
+    android:layout_marginVertical="@dimen/ds_spacing_xs"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="@dimen/ds_card_elevation_small"
+    app:cardCornerRadius="@dimen/ds_card_radius_large"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/ds_outline"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="88dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="@dimen/ds_spacing_s">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvFoodName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="@string/ds_placeholder_food_name"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                android:textSize="16sp"
+                android:maxLines="2"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:id="@+id/tvFoodCalories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/ds_placeholder_food_calories"
+                android:layout_marginTop="@dimen/ds_spacing_xs"
+                android:textAppearance="@android:style/TextAppearance.Material.Small"/>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMinus"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="@dimen/ds_control_size"
+            android:layout_height="@dimen/ds_control_size"
+            android:text="-"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:contentDescription="@string/ds_cd_remove_portion"
+            app:cornerRadius="16dp"
+            />
+
+        <TextView
+            android:id="@+id/tvPortion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:layout_marginHorizontal="@dimen/ds_spacing_xs"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPlus"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="@dimen/ds_control_size"
+            android:layout_height="@dimen/ds_control_size"
+            android:text="+"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:contentDescription="@string/ds_cd_add_portion"
+            app:cornerRadius="16dp"
+            />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

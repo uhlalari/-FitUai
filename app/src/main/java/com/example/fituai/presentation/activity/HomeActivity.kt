@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.fituai.R
 import com.example.fituai.data.local.MockRecipeDatabase
+import com.example.fituai.data.local.MockSportsTipsDatabase
 import com.example.fituai.data.repository.FitnessRepository
 import com.example.fituai.domain.usecase.CalculateTDEE
 import com.example.fituai.presentation.adapter.ImageCarouselAdapter
@@ -354,7 +355,21 @@ class HomeActivity : AppCompatActivity() {
         } else {
             val imageResId = imageList[position]
             val description = when (position) {
-                1 -> "Mundo do esporte: como manter o corpo ativo e a mente saudável."
+                1 -> {
+                    val tips = MockSportsTipsDatabase.tips
+                    val idx = (selectedDate.get(Calendar.DAY_OF_YEAR) % tips.size)
+                    val tip = tips[idx]
+                    buildString {
+                        append("📌 *Dica do dia: ${tip.title}*\n\n")
+                        append("📋 Por que é importante?\n")
+                        append("${tip.why}\n\n")
+                        append("🔥 Como aplicar agora\n")
+                        tip.how.forEach { append("• $it\n") }
+                        if (!tip.note.isNullOrBlank()) {
+                            append("\n📝 ${tip.note}\n")
+                        }
+                    }
+                }
                 2 -> "Tecnologia e saúde: descubra inovações para melhorar seu bem-estar."
                 3 -> "Uma noite de sono: a importância do descanso para sua saúde."
                 4 -> "Artigos úteis: informações para transformar seu estilo de vida."

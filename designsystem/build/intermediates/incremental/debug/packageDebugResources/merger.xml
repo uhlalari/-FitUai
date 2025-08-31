@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\leste\AndroidStudioProjects\FitUai\designsystem\src\main\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\leste\AndroidStudioProjects\FitUai\designsystem\src\main\res"><file name="ds_food_item" path="C:\Users\leste\AndroidStudioProjects\FitUai\designsystem\src\main\res\layout\ds_food_item.xml" qualifiers="" type="layout"/><file name="ds_meal_section_card" path="C:\Users\leste\AndroidStudioProjects\FitUai\designsystem\src\main\res\layout\ds_meal_section_card.xml" qualifiers="" type="layout"/><file name="ds_nutrition_summary_banner" path="C:\Users\leste\AndroidStudioProjects\FitUai\designsystem\src\main\res\layout\ds_nutrition_summary_banner.xml" qualifiers="" type="layout"/><file name="ds_water_card" path="C:\Users\leste\AndroidStudioProjects\FitUai\designsystem\src\main\res\layout\ds_water_card.xml" qualifiers="" type="layout"/><file path="C:\Users\leste\AndroidStudioProjects\FitUai\designsystem\src\main\res\values\attrs.xml" qualifiers=""><attr format="reference" name="ds_iconSrc"/><attr format="string" name="ds_titleText"/><attr format="color|reference" name="ds_titleTextColor"/><attr format="color|reference" name="ds_cardBackgroundColor"/><attr format="string" name="ds_ingestedText"/><attr format="string" name="ds_recommendedText"/><attr format="reference" name="ds_actionIcon"/><attr format="color|reference" name="ds_secondaryTextColor"/><attr format="reference" name="ds_leftActionIcon"/><attr format="reference" name="ds_rightActionIcon"/><declare-styleable name="MealSectionCardView">
+        <attr name="ds_iconSrc"/>
+        <attr name="ds_titleText"/>
+        <attr name="ds_ingestedText"/>
+        <attr name="ds_recommendedText"/>
+        <attr name="ds_actionIcon"/>
+        <attr name="ds_titleTextColor"/>
+        <attr name="ds_secondaryTextColor"/>
+        <attr name="ds_cardBackgroundColor"/>
+    </declare-styleable><declare-styleable name="WaterCardView">
+        <attr name="ds_iconSrc"/>
+        <attr name="ds_titleText"/>
+        <attr name="ds_leftActionIcon"/>
+        <attr name="ds_rightActionIcon"/>
+        <attr name="ds_titleTextColor"/>
+        <attr name="ds_cardBackgroundColor"/>
+    </declare-styleable><attr format="color|reference" name="ds_activeColor"/><attr format="color|reference" name="ds_inactiveColor"/><attr format="dimension" name="ds_segmentHeight"/><attr format="dimension" name="ds_segmentSpacing"/><attr format="dimension" name="ds_cornerRadius"/><attr format="integer" name="ds_animationDuration"/><declare-styleable name="StepProgressView">
+        
+        <attr format="integer" name="currentStep"/>
+        <attr format="integer" name="totalSteps"/>
+        
+        <attr name="ds_activeColor"/>
+        <attr name="ds_inactiveColor"/>
+        <attr name="ds_segmentHeight"/>
+        <attr name="ds_segmentSpacing"/>
+        <attr name="ds_cornerRadius"/>
+        <attr name="ds_animationDuration"/>
+    </declare-styleable><attr format="integer" name="ds_goalCalories"/><attr format="integer" name="ds_goalProtein"/><attr format="integer" name="ds_goalCarbs"/><attr format="integer" name="ds_goalFat"/><declare-styleable name="NutritionSummaryBannerView">
+        <attr name="ds_titleText"/>
+        <attr name="ds_titleTextColor"/>
+        <attr name="ds_cardBackgroundColor"/>
+        <attr name="ds_goalCalories"/>
+        <attr name="ds_goalProtein"/>
+        <attr name="ds_goalCarbs"/>
+        <attr name="ds_goalFat"/>
+    </declare-styleable></file><file path="C:\Users\leste\AndroidStudioProjects\FitUai\designsystem\src\main\res\values\colors.xml" qualifiers=""><color name="ds_outline">#E0E0E0</color></file><file path="C:\Users\leste\AndroidStudioProjects\FitUai\designsystem\src\main\res\values\dimens.xml" qualifiers=""><dimen name="ds_spacing_xs">4dp</dimen><dimen name="ds_spacing_s">8dp</dimen><dimen name="ds_spacing_m">12dp</dimen><dimen name="ds_spacing_l">16dp</dimen><dimen name="ds_card_radius">14dp</dimen><dimen name="ds_card_radius_large">16dp</dimen><dimen name="ds_card_elevation_small">3dp</dimen><dimen name="ds_card_elevation">4dp</dimen><dimen name="ds_control_size">32dp</dimen><dimen name="ds_progress_height">12dp</dimen><dimen name="ds_progress_corner">6dp</dimen><dimen name="ds_spacing_xs_6dp">6dp</dimen><dimen name="ds_spacing_xl_30dp">30dp</dimen></file><file path="C:\Users\leste\AndroidStudioProjects\FitUai\designsystem\src\main\res\values\strings.xml" qualifiers=""><string name="ds_default_nutrition_title">Resumo nutricional</string><string name="ds_cd_icon">Ícone</string><string name="ds_cd_action">Ação</string><string name="ds_cd_left">Ação esquerda</string><string name="ds_cd_right">Ação direita</string><string name="ds_cd_add_portion">Adicionar porção</string><string name="ds_cd_remove_portion">Remover porção</string><string name="ds_placeholder_food_name">Nome do alimento</string><string name="ds_placeholder_food_calories">100 kcal</string><string name="ds_label_calories">Calorias</string><string name="ds_value_zero_kcal">0/0 kcal</string><string name="ds_label_carbs">Carboidrato</string><string name="ds_label_protein">Proteína</string><string name="ds_label_fat">Gordura</string><string name="ds_value_zero_g">0/0 g</string></file><file path="C:\Users\leste\AndroidStudioProjects\FitUai\designsystem\src\main\res\values\styles.xml" qualifiers=""/></source></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\leste\AndroidStudioProjects\FitUai\designsystem\src\debug\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug" generated-set="debug$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\leste\AndroidStudioProjects\FitUai\designsystem\src\debug\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\leste\AndroidStudioProjects\FitUai\designsystem\build\generated\res\resValues\debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated" generated-set="generated$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\leste\AndroidStudioProjects\FitUai\designsystem\build\generated\res\resValues\debug"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="StepProgressView">
+        
+        <attr format="integer" name="currentStep"/>
+        <attr format="integer" name="totalSteps"/>
+        
+        <attr name="ds_activeColor"/>
+        <attr name="ds_inactiveColor"/>
+        <attr name="ds_segmentHeight"/>
+        <attr name="ds_segmentSpacing"/>
+        <attr name="ds_cornerRadius"/>
+        <attr name="ds_animationDuration"/>
+    </declare-styleable><declare-styleable name="WaterCardView">
+        <attr name="ds_iconSrc"/>
+        <attr name="ds_titleText"/>
+        <attr name="ds_leftActionIcon"/>
+        <attr name="ds_rightActionIcon"/>
+        <attr name="ds_titleTextColor"/>
+        <attr name="ds_cardBackgroundColor"/>
+    </declare-styleable><declare-styleable name="MealSectionCardView">
+        <attr name="ds_iconSrc"/>
+        <attr name="ds_titleText"/>
+        <attr name="ds_ingestedText"/>
+        <attr name="ds_recommendedText"/>
+        <attr name="ds_actionIcon"/>
+        <attr name="ds_titleTextColor"/>
+        <attr name="ds_secondaryTextColor"/>
+        <attr name="ds_cardBackgroundColor"/>
+    </declare-styleable><declare-styleable name="NutritionSummaryBannerView">
+        <attr name="ds_titleText"/>
+        <attr name="ds_titleTextColor"/>
+        <attr name="ds_cardBackgroundColor"/>
+        <attr name="ds_goalCalories"/>
+        <attr name="ds_goalProtein"/>
+        <attr name="ds_goalCarbs"/>
+        <attr name="ds_goalFat"/>
+    </declare-styleable></configuration></mergedItems></merger>

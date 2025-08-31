@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ds_water_card_root"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    app:cardCornerRadius="@dimen/ds_card_radius"
+    app:cardElevation="@dimen/ds_card_elevation"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/ds_spacing_m">
+
+        <ImageView
+            android:id="@+id/ds_icon"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:contentDescription="@string/ds_cd_icon"
+            android:scaleType="centerInside" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/ds_spacing_m"
+            android:paddingEnd="@dimen/ds_spacing_m">
+
+            <ImageButton
+                android:id="@+id/ds_left_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/ds_spacing_l"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/ds_cd_left" />
+
+            <TextView
+                android:id="@+id/ds_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="Água" />
+
+            <ImageButton
+                android:id="@+id/ds_right_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/ds_spacing_l"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/ds_cd_right" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ds_nutrition_banner_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/ds_card_radius"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="@dimen/ds_card_elevation">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/ds_spacing_l">
+
+        <TextView
+            android:id="@+id/ds_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="@string/ds_default_nutrition_title"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_marginBottom="@dimen/ds_spacing_m"/>
+
+        <!-- Calorias: linha de rótulo/valor -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/ds_label_calories"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:text="@string/ds_label_calories"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/ds_value_calories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/ds_value_zero_kcal"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <!-- Calorias: barra grande -->
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/ds_progress_calories"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ds_progress_height"
+            android:layout_marginTop="@dimen/ds_spacing_xs_6dp"
+            android:layout_marginBottom="@dimen/ds_spacing_xl_30dp"
+            app:trackThickness="@dimen/ds_progress_height"
+            app:trackCornerRadius="@dimen/ds_progress_corner"/>
+
+        <!-- Macronutrientes: rótulos lado a lado -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="3"
+            android:layout_marginBottom="@dimen/ds_spacing_xs">
+
+            <TextView
+                android:id="@+id/ds_label_carbs"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/ds_label_carbs"
+                android:textAlignment="center"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/ds_label_protein"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/ds_label_protein"
+                android:textAlignment="center"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/ds_label_fat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/ds_label_fat"
+                android:textAlignment="center"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Macronutrientes: 3 barras pequenas lado a lado -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="3">
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/ds_progress_carbs"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/ds_progress_height"
+                android:layout_marginHorizontal="@dimen/ds_spacing_xs"
+                android:layout_weight="1"
+                app:trackThickness="@dimen/ds_progress_height"
+                app:trackCornerRadius="@dimen/ds_progress_corner" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/ds_progress_protein"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/ds_progress_height"
+                android:layout_marginHorizontal="@dimen/ds_spacing_xs"
+                android:layout_weight="1"
+                app:trackThickness="@dimen/ds_progress_height"
+                app:trackCornerRadius="@dimen/ds_progress_corner" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/ds_progress_fat"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/ds_progress_height"
+                android:layout_marginHorizontal="@dimen/ds_spacing_xs"
+                android:layout_weight="1"
+                app:trackThickness="@dimen/ds_progress_height"
+                app:trackCornerRadius="@dimen/ds_progress_corner" />
+        </LinearLayout>
+
+        <!-- Macronutrientes: valores lado a lado -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="4dp"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/ds_value_carbs"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:text="@string/ds_value_zero_g"
+                android:textAlignment="center"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/ds_value_protein"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:text="@string/ds_value_zero_g"
+                android:textAlignment="center"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/ds_value_fat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:text="@string/ds_value_zero_g"
+                android:textAlignment="center"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
