@@ -39,6 +39,12 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.fituai.core.AppPreferences
 import com.example.fituai.notification.NotificationHelper
+import android.animation.ObjectAnimator
+import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.TextView as AndroidTextView
+import android.view.animation.AccelerateInterpolator
+import kotlin.random.Random
 
 class HomeActivity : AppCompatActivity() {
 
@@ -283,6 +289,15 @@ class HomeActivity : AppCompatActivity() {
             updateWaterUI()
 
             updateDailyNotification(entries.isNotEmpty(), totalCalories, tdee.toInt())
+
+            // Celebrar streak de alimentos com "confetes" (emojis de alimentos)
+            val streak = computeFoodStreakDays()
+            val today = FitnessRepository.getToday()
+            val lastCelebration = AppPreferences.getLastStreakCelebrationDate(this@HomeActivity)
+            if (streak >= 5 && lastCelebration != today) {
+                launchFoodEmojiConfetti()
+                AppPreferences.setLastStreakCelebrationDate(this@HomeActivity, today)
+            }
         }
     }
 
@@ -384,5 +399,96 @@ class HomeActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    // Calcula quantos dias consecutivos (incluindo hoje) o usuário registrou algum alimento
+    private suspend fun computeFoodStreakDays(): Int {
+        val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val cal = Calendar.getInstance()
+        var streak = 0
+        while (true) {
+            val dateStr = sdf.format(cal.time)
+            val entries = repository.getFoodEntriesByDate(dateStr)
+            if (entries.isEmpty()) break
+            streak += 1
+            cal.add(Calendar.DATE, -1)
+        }
+        return streak
+    }
+
+    // Animação nativa de "chuva" de emojis de alimentos (sem dependências externas)
+    private fun launchFoodEmojiConfetti() {
+        val root = findViewById<ViewGroup>(android.R.id.content) as FrameLayout
+
+        // Lista somente com emojis de alimentos
+        val foodEmojis = listOf(
+            "🍎", "🍌", "🍇", "🥑", "🍓", "🍉", "🍍", "🍒",
+            "🥕", "🌽", "🍞", "🧀", "🍗", "🍣", "🍕", "🍫", "🍪", "🥦", "🍊", "🍋"
+        )
+
+        // Garante medidas antes de posicionar
+        if (root.width == 0 || root.height == 0) {
+            root.post { launchFoodEmojiConfetti() }
+            return
+        }
+
+        val count = 36 // quantidade moderada para não pesar
+        val views = mutableListOf<AndroidTextView>()
+
+        repeat(count) {
+            val tv = AndroidTextView(this).apply {
+                text = foodEmojis.random()
+                textSize = Random.nextInt(16, 26).toFloat()
+                alpha = Random.nextFloat().coerceIn(0.75f, 1f)
+            }
+            val lp = FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.WRAP_CONTENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT
+            )
+            root.addView(tv, lp)
+
+            // Posição inicial aleatória no eixo X, um pouco acima do topo
+            val startX = Random.nextInt(0, root.width).toFloat()
+            val endY = root.height + Random.nextInt(80, 200)
+            val driftX = Random.nextInt(-120, 121) // deriva lateral
+            val startRotation = Random.nextInt(-30, 31).toFloat()
+            val rotationDelta = Random.nextInt(60, 181) * if (Random.nextBoolean()) 1 else -1
+            val duration = Random.nextLong(1200L, 2300L)
+            val delay = Random.nextLong(0L, 400L)
+
+            tv.translationX = startX
+            tv.translationY = -Random.nextInt(50, 200).toFloat()
+            tv.rotation = startRotation
+
+            // Queda vertical
+            val fall = ObjectAnimator.ofFloat(tv, View.TRANSLATION_Y, tv.translationY, endY.toFloat()).apply {
+                this.duration = duration
+                interpolator = AccelerateInterpolator(1.2f)
+                startDelay = delay
+            }
+            // Leve deriva no X
+            val sway = ObjectAnimator.ofFloat(tv, View.TRANSLATION_X, startX, startX + driftX).apply {
+                this.duration = duration
+                interpolator = AccelerateInterpolator(1.0f)
+                startDelay = delay
+            }
+            // Rotação
+            val spin = ObjectAnimator.ofFloat(tv, View.ROTATION, startRotation, startRotation + rotationDelta).apply {
+                this.duration = duration
+                interpolator = AccelerateInterpolator(1.0f)
+                startDelay = delay
+            }
+
+            fall.start()
+            sway.start()
+            spin.start()
+
+            // Remoção segura ao final (usa o maior duration+delay como referência)
+            tv.postDelayed({
+                root.removeView(tv)
+            }, delay + duration + 100)
+
+            views.add(tv)
+        }
     }
 }
