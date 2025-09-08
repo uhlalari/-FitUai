@@ -167,7 +167,7 @@
                 android:layout_height="100dp"
                 android:layout_marginHorizontal="4dp"
                 android:layout_marginBottom="4dp"
-                app:ds_iconSrc="@drawable/ic_iogurte"
+                app:ds_iconSrc="@drawable/ic_water_glass"
                 app:ds_titleText="Água"
                 app:ds_titleTextColor="@color/purple"
                 app:ds_cardBackgroundColor="@color/neutral100"

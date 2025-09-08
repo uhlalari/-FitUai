@@ -7,6 +7,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.example.fituai.designsystem.R
 import com.google.android.material.card.MaterialCardView
 
 class WaterCardView @JvmOverloads constructor(

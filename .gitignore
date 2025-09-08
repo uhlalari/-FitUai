@@ -1,15 +1,22 @@
 *.iml
-.gradle
+/.gradle
 /local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+/.idea/
 .DS_Store
 /build
 /captures
-.externalNativeBuild
-.cxx
+/.externalNativeBuild
+/.cxx
 local.properties
+
+# Ignorar build/ e artefatos gerados em todos os módulos
+**/build/
+**/out/
+**/.transforms/
+**/intermediates/
+**/generated/
+
+# Ferramentas/temporários
+/.kotlin/
+.kotlinc/
+*.log
