@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FitUai</string>
+    <string name="app_name">FitUAI</string>
     <string name="notification_daily_progress_title">Progresso diário</string>
     <string name="porcoes_format">%1$d porções</string>
 

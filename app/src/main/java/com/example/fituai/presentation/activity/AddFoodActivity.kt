@@ -22,6 +22,7 @@ import com.example.fituai.presentation.adapter.FoodAdapter
 import kotlinx.coroutines.launch
 import com.example.fituai.core.AppPreferences
 import com.example.fituai.notification.NotificationHelper
+import com.example.fituai.domain.usecase.CalculateMacros
 import com.example.fituai.domain.usecase.CalculateTDEE
 
 class AddFoodActivity : AppCompatActivity() {
@@ -129,8 +130,9 @@ class AddFoodActivity : AppCompatActivity() {
                     val consumed = entriesToday.sumOf { it.calories * it.quantity }
                     val userData = repository.getUserData()
                     val tdee = userData?.let { CalculateTDEE().execute(it) } ?: 2000.0
+                    val adjusted = CalculateMacros().execute(tdee, userData?.goal).adjustedCalories
                     if (entriesToday.isNotEmpty()) {
-                        NotificationHelper.showDailyProgress(this@AddFoodActivity, consumed, tdee.toInt())
+                        NotificationHelper.showDailyProgress(this@AddFoodActivity, consumed, adjusted)
                     } else {
                         NotificationHelper.cancelDailyProgress(this@AddFoodActivity)
                     }

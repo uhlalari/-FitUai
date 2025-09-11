@@ -13,7 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="2dp"
             android:background="@color/white"
             android:gravity="center_horizontal"
             android:orientation="vertical">
@@ -24,7 +24,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="8dp">
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp">
 
                 <ImageButton
                     android:id="@+id/btnMenu"
@@ -42,20 +43,20 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@string/app_name"
-                    android:textColor="@color/darkPurple"
+                    android:textColor="@color/orange"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
 
-            <!-- Controle de data -->
+            <!-- Controle de data (restaurado) -->
             <LinearLayout
                 android:id="@+id/dateControlLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingVertical="8dp"
+                android:paddingVertical="2dp"
                 android:paddingHorizontal="0dp">
 
                 <!-- Botão anterior alinhado à esquerda -->
@@ -106,14 +107,15 @@
                 android:id="@+id/dsNutritionBanner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp" />
+                android:layout_marginHorizontal="4dp"
+                android:layout_marginVertical="0.5dp" />
 
             <com.example.fituai.designsystem.MealSectionCardView
                 android:id="@+id/addSnackCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginBottom="1dp"
                 app:ds_iconSrc="@drawable/ic_banana"
                 app:ds_titleText="Lanche"
                 app:ds_titleTextColor="@color/purple"
@@ -128,8 +130,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"
-                android:layout_marginBottom="4dp"
-                app:ds_iconSrc="@drawable/ic_arroz"
+                android:layout_marginBottom="1dp"
+                app:ds_iconSrc="@drawable/ic_food"
                 app:ds_titleText="Almoco"
                 app:ds_titleTextColor="@color/purple"
                 app:ds_secondaryTextColor="@color/purple"
@@ -143,8 +145,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"
-                android:layout_marginBottom="4dp"
-                app:ds_iconSrc="@drawable/ic_hamburguer"
+                android:layout_marginBottom="1dp"
+                app:ds_iconSrc="@drawable/ic_burger"
                 app:ds_titleText="Janta"
                 app:ds_titleTextColor="@color/purple"
                 app:ds_secondaryTextColor="@color/purple"
@@ -153,21 +155,20 @@
                 app:ds_recommendedText="Recomendado: 300 kcal"
                 app:ds_actionIcon="@drawable/ic_add" />
 
-
-            <!-- Carrossel -->
+            <!-- Carrossel (restaurado na posição original) -->
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/bannerViewPager"
                 android:layout_width="match_parent"
-                android:layout_height="210dp"
-                android:layout_marginBottom="4dp" />
+                android:layout_height="170dp"
+                android:layout_marginBottom="1dp" />
 
             <com.example.fituai.designsystem.WaterCardView
                 android:id="@+id/waterCard"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginHorizontal="4dp"
-                android:layout_marginBottom="4dp"
-                app:ds_iconSrc="@drawable/ic_water_glass"
+                android:layout_marginBottom="1dp"
+                app:ds_iconSrc="@drawable/ic_water"
                 app:ds_titleText="Água"
                 app:ds_titleTextColor="@color/purple"
                 app:ds_cardBackgroundColor="@color/neutral100"
@@ -185,6 +186,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        android:background="@color/neutral100"
+        app:itemTextColor="@color/purple"
+        app:itemIconTint="@color/purple"
         app:menu="@menu/drawer_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

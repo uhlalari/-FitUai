@@ -20,7 +20,7 @@
         android:background="@drawable/bg_search_field"
         android:padding="12dp"
         android:textColor="@color/darkPurple"
-        android:textColorHint="@color/purple_light"
+        android:textColorHint="@color/darkPurple"
         android:inputType="text" />
 
     <!-- Lista de alimentos -->
@@ -44,5 +44,12 @@
         android:textColor="@color/white"
         android:layout_marginTop="8dp"
         style="@style/Widget.MaterialComponents.Button"
-        app:backgroundTint="@color/purple" />
+        app:backgroundTint="@color/purple"
+        app:cornerRadius="12dp"
+        app:strokeWidth="0dp"
+        android:minHeight="56dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp" />
 </LinearLayout>

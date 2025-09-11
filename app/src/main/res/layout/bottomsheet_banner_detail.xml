@@ -13,9 +13,12 @@
         <ImageView
             android:id="@+id/imageViewBannerDetail"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:layout_marginBottom="16dp" />
+            android:layout_height="140dp"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
+            android:padding="16dp"
+            android:background="@color/neutral100"
+            android:layout_marginBottom="12dp" />
 
         <TextView
             android:id="@+id/textViewBannerDetail"

@@ -6,19 +6,36 @@
     android:padding="16dp">
 
     <TextView
+        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Como calculamos seu gasto calórico?"
+        android:text="Como calculamos suas metas"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/darkPurple"
         android:gravity="center" />
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Usamos a fórmula de Harris-Benedict para estimar seu TDEE com base no seu peso, altura e nível de atividade."
-        android:textSize="14sp"
+        android:fillViewport="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/tvBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/darkPurple"
+            android:lineSpacingExtra="2dp"/>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tvNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
         android:textColor="@color/darkPurple"
-        android:layout_marginTop="8dp"/>
+        android:alpha="0.85"/>
 </LinearLayout>

@@ -9,8 +9,8 @@
     <!-- Cartões -->
     <dimen name="ds_card_radius">14dp</dimen>
     <dimen name="ds_card_radius_large">16dp</dimen>
-    <dimen name="ds_card_elevation_small">3dp</dimen>
-    <dimen name="ds_card_elevation">4dp</dimen>
+    <dimen name="ds_card_elevation_small">2dp</dimen>
+    <dimen name="ds_card_elevation">2dp</dimen>
 
     <!-- Controles -->
     <dimen name="ds_control_size">32dp</dimen>

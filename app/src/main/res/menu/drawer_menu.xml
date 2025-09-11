@@ -9,5 +9,6 @@
         android:id="@+id/menu_toggle_notification"
         android:title="Notificação de progresso diária"
         android:checkable="true"
-        android:checked="true" />
+        android:checked="true"
+        android:icon="@drawable/ic_banana" />
 </menu>

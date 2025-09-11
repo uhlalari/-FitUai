@@ -20,9 +20,14 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.fituai.R
 import com.example.fituai.data.local.MockRecipeDatabase
 import com.example.fituai.data.local.MockSportsTipsDatabase
+import com.example.fituai.data.local.MockRecipeDatabaseSobremesas
 import com.example.fituai.data.repository.FitnessRepository
+import com.example.fituai.data.local.MockTechHealthTipsDatabase
+import com.example.fituai.data.local.MockFocoTipsDatabase
 import com.example.fituai.domain.usecase.CalculateTDEE
+import com.example.fituai.domain.usecase.CalculateMacros
 import com.example.fituai.presentation.adapter.ImageCarouselAdapter
+import com.example.fituai.presentation.adapter.BannerItem
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -64,12 +69,12 @@ class HomeActivity : AppCompatActivity() {
     private var totalCaloriesConsumed = 0.0
     private val selectedDate = Calendar.getInstance()
 
-    private val imageList = listOf(
-        R.drawable.ic_banner_receita_sugerida,
-        R.drawable.ic_banner_mundo_esporte,
-        R.drawable.ic_banner_tecnologia_saude,
-        R.drawable.ic_banner_noite_sono,
-        R.drawable.ic_banner_artigos_uteis
+    private val bannerItems = listOf(
+        BannerItem(R.drawable.ic_recipe, "Receita sugerida"),    // 0
+        BannerItem(R.drawable.ic_dicas, "Dicas"),  // 1 (substitui Artigos úteis)
+        BannerItem(R.drawable.ic_sport, "Mundo do esporte"),     // 2
+        BannerItem(R.drawable.ic_brigadeiro, "Doces fitness"),   // 3
+        BannerItem(R.drawable.ic_tech, "Tech")                   // 4
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -239,11 +244,13 @@ class HomeActivity : AppCompatActivity() {
             val entries = repository.getFoodEntriesByDate(getFormattedDate())
             val userData = repository.getUserData()
             val tdee = userData?.let { CalculateTDEE().execute(it) } ?: 2000.0
+            val macros = CalculateMacros().execute(tdee, userData?.goal)
+            val adjustedCalories = macros.adjustedCalories
 
             val recomendado = mapOf(
-                "Lanche" to (tdee * 0.25).toInt(),
-                "Almoco" to (tdee * 0.4).toInt(),
-                "Jantar" to (tdee * 0.35).toInt()
+                "Lanche" to (adjustedCalories * 0.25).toInt(),
+                "Almoco" to (adjustedCalories * 0.4).toInt(),
+                "Jantar" to (adjustedCalories * 0.35).toInt()
             )
 
             val ingerido = mapOf(
@@ -271,12 +278,12 @@ class HomeActivity : AppCompatActivity() {
 
             totalCaloriesConsumed = totalCalories.toDouble()
 
-            // Metas e valores (mantendo regras de negócio)
+            // Metas e valores (agora derivadas do TDEE e objetivo)
             nutritionBanner.setGoals(
-                calories = tdee.toInt(),
-                protein = 150,
-                carbs = 300,
-                fat = 70
+                calories = adjustedCalories,
+                protein = macros.proteinGrams,
+                carbs = macros.carbsGrams,
+                fat = macros.fatGrams
             )
             nutritionBanner.updateAll(
                 calories = totalCalories,
@@ -284,11 +291,11 @@ class HomeActivity : AppCompatActivity() {
                 carbs = totalCarbs,
                 fat = totalFat
             )
-            nutritionBanner.setTitle("Ingestão Nutricional: ${totalCalories}/${tdee.toInt()} kcal")
+            nutritionBanner.setTitle("Ingestão Nutricional: ${totalCalories}/${adjustedCalories} kcal")
 
             updateWaterUI()
 
-            updateDailyNotification(entries.isNotEmpty(), totalCalories, tdee.toInt())
+            updateDailyNotification(entries.isNotEmpty(), totalCalories, adjustedCalories)
 
             // Celebrar streak de alimentos com "confetes" (emojis de alimentos)
             val streak = computeFoodStreakDays()
@@ -319,7 +326,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupBannerCarousel() {
-        val adapter = ImageCarouselAdapter(imageList) { showBannerBottomSheet(it) }
+        val adapter = ImageCarouselAdapter(bannerItems) { showBannerBottomSheet(it) }
         bannerViewPager.adapter = adapter
 
         bannerViewPager.apply {
@@ -336,7 +343,7 @@ class HomeActivity : AppCompatActivity() {
 
         bannerViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
-                bannerViewPager.setPadding(if (position == imageList.lastIndex) 64 else 0, 0, 64, 0)
+                bannerViewPager.setPadding(if (position == bannerItems.lastIndex) 64 else 0, 0, 64, 0)
             }
         })
     }
@@ -362,15 +369,33 @@ class HomeActivity : AppCompatActivity() {
             }
 
             val bottomSheet = CarouselBottomSheet.newInstance(
-                R.drawable.ic_banner_receita_sugerida,
+                bannerItems[0].imageRes,
                 description
             )
             bottomSheet.show(supportFragmentManager, "BannerBottomSheet")
 
         } else {
-            val imageResId = imageList[position]
+            val imageResId = bannerItems[position].imageRes
             val description = when (position) {
+                // 1: Dicas (Foco)
                 1 -> {
+                    val tips = MockFocoTipsDatabase.tips
+                    val dayIndex = selectedDate.get(Calendar.DAY_OF_YEAR) % 30
+                    val idx = dayIndex % tips.size
+                    val tip = tips[idx]
+                    buildString {
+                        append("💡 *${tip.title}*\n\n")
+                        append("📋 Por que é importante?\n")
+                        append("${tip.why}\n\n")
+                        append("🔥 Como aplicar agora\n")
+                        tip.how.forEach { append("• $it\n") }
+                        if (!tip.note.isNullOrBlank()) {
+                            append("\n📝 ${tip.note}\n")
+                        }
+                    }
+                }
+                // 2: Mundo do esporte
+                2 -> {
                     val tips = MockSportsTipsDatabase.tips
                     val idx = (selectedDate.get(Calendar.DAY_OF_YEAR) % tips.size)
                     val tip = tips[idx]
@@ -385,12 +410,45 @@ class HomeActivity : AppCompatActivity() {
                         }
                     }
                 }
-                2 -> "Tecnologia e saúde: descubra inovações para melhorar seu bem-estar."
-                3 -> "Uma noite de sono: a importância do descanso para sua saúde."
-                4 -> "Artigos úteis: informações para transformar seu estilo de vida."
+                // 3: Doces fitness (sobremesas)
+                3 -> {
+                    val sobremesas = MockRecipeDatabaseSobremesas.sobremesas
+                    val dayIndex = selectedDate.get(Calendar.DAY_OF_YEAR) % 30
+                    val idx = dayIndex % sobremesas.size
+                    val doce = sobremesas[idx]
+                    buildString {
+                        append("🍮 *${doce.name}*\n\n")
+                        append("📌 Categoria: ${doce.category}\n")
+                        append("⏱️ Tempo de preparo: ${doce.preparationTimeMinutes} min\n")
+                        append("🔥 Calorias por porção: ${doce.caloriesPerServing} kcal\n")
+                        append("👥 Porções: ${doce.servings}\n\n")
+                        append("📋 Ingredientes:\n")
+                        doce.ingredients.forEach { append("• $it\n") }
+                        append("\n👩‍🍳 Modo de preparo:\n")
+                        doce.preparationSteps.forEachIndexed { i, passo ->
+                            append("${i + 1}. $passo\n")
+                        }
+                    }
+                }
+                // 4: Tech
+                4 -> {
+                    val tips = MockTechHealthTipsDatabase.tips
+                    val dayIndex = selectedDate.get(Calendar.DAY_OF_YEAR) % 30
+                    val idx = dayIndex % tips.size
+                    val tip = tips[idx]
+                    buildString {
+                        append("🤖 *${tip.title}*\n\n")
+                        append("📋 Por que é importante?\n")
+                        append("${tip.why}\n\n")
+                        append("🔥 Como aplicar agora\n")
+                        tip.how.forEach { append("• $it\n") }
+                        if (!tip.note.isNullOrBlank()) {
+                            append("\n📝 ${tip.note}\n")
+                        }
+                    }
+                }
                 else -> ""
             }
-
             val bottomSheet = CarouselBottomSheet.newInstance(imageResId, description)
             bottomSheet.show(supportFragmentManager, "BannerBottomSheet")
         }

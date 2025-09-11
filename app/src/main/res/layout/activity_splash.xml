@@ -10,7 +10,7 @@
         android:layout_height="72dp"
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
-        android:src="@drawable/ic_banana"
+        android:src="@drawable/ic_icon"
         android:contentDescription="Logo do app" />
 
 </LinearLayout>
